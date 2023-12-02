@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Text, Animated, StyleSheet } from "react-native";
+import { Text, Animated, StyleSheet, View } from "react-native";
 import {
   GestureHandlerRootView,
   PanGestureHandler,
@@ -1021,9 +1021,9 @@ const whoAmIUpdated = whoAmI.map((person) => ({
 
 export default function App() {
   const translateY = useRef(new Animated.Value(0)).current;
-  const shakeThreshold = 1.5;
+  const shakeThreshold = 1.3;
   let lastShakeTime = 0;
-  const [message, setMessage] = useState("Salla Beniiigggg");
+  const [message, setMessage] = useState("Salla Beniiiğğğğ");
   const [bannedWord, setBannedWord] = useState("");
 
   useEffect(() => {
@@ -1057,7 +1057,7 @@ export default function App() {
 
     Animated.timing(translateY, {
       toValue: 0,
-      duration: 300,
+      duration: 100,
       useNativeDriver: true,
     }).start();
   };
@@ -1092,13 +1092,18 @@ export default function App() {
         onHandlerStateChange={onHandlerStateChange}
       >
         <Animated.View style={[styles.box, { transform: [{ translateY }] }]}>
-          <Text style={styles.text}>{message}</Text>
-          {message !== "Salla Beniiigggg" && (
-            <>
-              <Text style={styles.bannedHeader}>Bunlar Yasak:</Text>
-              <Text style={styles.bannedText}>{bannedWord}</Text>
-            </>
-          )}
+          <View style={styles.border}>
+            <Text style={styles.text}>{message}</Text>
+            {message !== "Salla Beniiiğğğğ" && (
+              <>
+                <Text style={styles.bannedHeader}>Bunlar Yasak:</Text>
+                <Text style={styles.bannedText}>{bannedWord}</Text>
+              </>
+            )}
+            <View style={{ flexDirection: "row" }}>
+              <Text style={styles.infoText}>Değiştirmek İçin Sallayınız</Text>
+            </View>
+          </View>
         </Animated.View>
       </PanGestureHandler>
     </GestureHandlerRootView>
@@ -1114,7 +1119,7 @@ const styles = StyleSheet.create({
   box: {
     flex: 1,
     width: "100%",
-    backgroundColor: "#ffcc00",
+    backgroundColor: "#ffcc44",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -1129,6 +1134,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     writingDirection: "rtl",
+    textTransform: "uppercase",
   },
   bannedHeader: {
     fontSize: 25,
@@ -1136,5 +1142,24 @@ const styles = StyleSheet.create({
     textAlign: "center",
     writingDirection: "rtl",
     marginTop: 10,
+  },
+  border: {
+    borderWidth: 5,
+    borderColor: "black",
+    padding: 10,
+    borderRadius: 10,
+    margin: 10,
+    marginTop: 50,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ffcc00",
+  },
+  infoText: {
+    fontSize: 16,
+    fontWeight: "normal",
+    textAlign: "center",
+    writingDirection: "rtl",
+    marginTop: 30,
   },
 });
