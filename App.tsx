@@ -9,8 +9,8 @@ import {
 } from "react-native-gesture-handler";
 import { Accelerometer } from "expo-sensors";
 import * as ScreenOrientation from "expo-screen-orientation";
-import { whoAmI } from "./mockData";
-import i18n from "./i18n";
+import { whoAmI } from "@/mockData";
+import i18n from "@/i18";
 
 const whoAmIUpdated = whoAmI.map((person) => ({
   ...person,

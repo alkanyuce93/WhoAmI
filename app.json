@@ -32,6 +32,28 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "resolver": {
+      "sourceExts": ["jsx", "js", "ts", "tsx"],
+      "assetExts": [
+        "png",
+        "jpg",
+        "jpeg",
+        "gif",
+        "svg",
+        "mp4",
+        "webm",
+        "wav",
+        "mp3",
+        "m4a",
+        "aac",
+        "oga",
+        "oga",
+        "zip"
+      ],
+      "extraNodeModules": {
+        "@": "./src"
+      }
     }
   }
 }
