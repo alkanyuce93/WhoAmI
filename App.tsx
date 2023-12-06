@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Text, Animated, StyleSheet, View } from "react-native";
+import "intl-pluralrules";
+
 import {
   GestureHandlerRootView,
   PanGestureHandler,
@@ -8,6 +10,7 @@ import {
 import { Accelerometer } from "expo-sensors";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { whoAmI } from "./mockData";
+import i18n from "./i18n";
 
 const whoAmIUpdated = whoAmI.map((person) => ({
   ...person,
@@ -18,7 +21,7 @@ export default function App() {
   const translateY = useRef(new Animated.Value(0)).current;
   const shakeThreshold = 1.3;
   let lastShakeTime = 0;
-  const [message, setMessage] = useState("Salla Beniiiğğğğ");
+  const [message, setMessage] = useState(i18n.t("shakeMe"));
   const [bannedWord, setBannedWord] = useState("");
 
   useEffect(() => {
